@@ -48,6 +48,17 @@ async function main() {
   const findResult = await collection.find({}).toArray();
   console.log("Found documents =>", findResult);
 
+  // update data
+  const updateResult = await collection.updateOne(
+    { firstName: "Akash" },
+    { $set: { city: "New York" } },
+  );
+  console.log("Updated document =>", updateResult);
+
+  // delete data
+  const deleteResult = await collection.deleteOne({ firstName: "Amar" });
+  console.log("Deleted document =>", deleteResult);
+
   // count documents
   const count = await collection.countDocuments({});
   console.log("Total documents in collection =>", count);
